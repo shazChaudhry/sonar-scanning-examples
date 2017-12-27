@@ -75,7 +75,7 @@ pipeline {
       }
       steps {
         // See this blog on how to release maven projects:- https://axelfontaine.com/blog/dead-burried.html
-        sh 'mvn scm:tag -Drevision=$BUILD_NUMBER -f $PWD/sonarqube-scanner-maven/pom.xml'
+        sh 'mvn scm:tag -Drevision=$BUILD_NUMBER -X -f $PWD/sonarqube-scanner-maven/pom.xml'
       }
     }
   }
