@@ -13,5 +13,10 @@ pipeline {
         archiveArtifacts(allowEmptyArchive: true, artifacts: '**/target/*.jar', fingerprint: true, onlyIfSuccessful: true, defaultExcludes: true)
       }
     }
+    stage('Unit test') {
+      steps {
+        sh 'mvn test -f $PWD/sonarqube-scanner-maven/pom.xml'
+      }
+    }
   }
 }
