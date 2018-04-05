@@ -19,5 +19,10 @@ pipeline {
         junit(testResults: '**/target/surefire-reports/*.xml', allowEmptyResults: true)
       }
     }
+    stage('Static Analysis') {
+      steps {
+        sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.4.0.905:sonar -f $PWD/sonarqube-scanner-maven/pom.xml -Dsonar.host.url=http://node1:9000'
+      }
+    }
   }
 }
