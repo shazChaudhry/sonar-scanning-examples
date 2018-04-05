@@ -10,6 +10,7 @@ pipeline {
     stage('Build') {
       steps {
         sh 'mvn clean package -DskipTests=true -f $PWD/sonarqube-scanner-maven/pom.xml'
+        archiveArtifacts(allowEmptyArchive: true, artifacts: '**/target/*.jar', fingerprint: true, onlyIfSuccessful: true, defaultExcludes: true)
       }
     }
   }
